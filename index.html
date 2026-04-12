@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>S. M. Mahmudul Hasan | Odoo & Python Developer</title>
+  <meta name="description" content="Portfolio website of S. M. Mahmudul Hasan, Odoo developer and implementer with 8 years of experience in Python, Odoo customization, ERP implementation, API integration, and custom reports." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg2:#111827;
+      --surface:#ffffff;
+      --soft:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --primary:#2563eb;
+      --primary2:#1d4ed8;
+      --accent:#0ea5e9;
+      --shadow:0 18px 45px rgba(15,23,42,.10);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:var(--soft);
+      line-height:1.6;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(92%, var(--max));margin:0 auto}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(15,23,42,.92);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav-inner{
+      display:flex;justify-content:space-between;align-items:center;
+      gap:16px;padding:16px 0;
+    }
+    .brand{color:#fff;font-weight:700;font-size:1.12rem}
+    .menu{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+    .menu a{color:rgba(255,255,255,.86);font-size:.95rem}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:13px 20px;border-radius:999px;font-weight:700;
+      border:none;cursor:pointer;transition:.2s ease;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:#fff;box-shadow:0 12px 28px rgba(37,99,235,.25);
+    }
+    .btn-outline{
+      color:#fff;border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+    }
+    .btn-light{
+      color:var(--primary2);background:#eff6ff;border:1px solid #bfdbfe;
+    }
+    .hero{
+      color:#fff;
+      background:
+        radial-gradient(circle at top right, rgba(14,165,233,.20), transparent 28%),
+        radial-gradient(circle at left center, rgba(37,99,235,.22), transparent 28%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      padding:86px 0 78px;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;
+    }
+    .eyebrow{
+      display:inline-block;padding:8px 14px;border-radius:999px;
+      background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.10);
+      color:#cbd5e1;font-size:.88rem;margin-bottom:18px;
+    }
+    h1{
+      margin:0 0 16px;
+      font-size:clamp(2.3rem, 5vw, 4.2rem);
+      line-height:1.07;letter-spacing:-.03em;
+    }
+    .hero p{color:#dbeafe;font-size:1.05rem;max-width:720px;margin:0 0 26px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .stat{
+      padding:18px;border-radius:18px;
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);
+    }
+    .stat strong{display:block;font-size:1.45rem;margin-bottom:4px}
+    .hero-card{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);
+      border-radius:28px;padding:24px;box-shadow:0 18px 40px rgba(0,0,0,.18);
+    }
+    .profile-panel{
+      background:#fff;color:var(--text);border-radius:22px;padding:22px;box-shadow:var(--shadow);
+    }
+    .profile-header{
+      display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:14px;
+    }
+    .badge{
+      padding:6px 12px;border-radius:999px;background:#eff6ff;color:var(--primary2);
+      font-size:.82rem;font-weight:700;
+    }
+    .meter{height:12px;background:#e2e8f0;border-radius:999px;overflow:hidden;margin:10px 0 16px}
+    .meter span{display:block;height:100%;background:linear-gradient(90deg,var(--primary),var(--accent))}
+    .skill-list{display:grid;gap:12px}
+    .skill{
+      display:flex;justify-content:space-between;gap:12px;align-items:center;
+      padding:12px 14px;background:#f8fafc;border:1px solid var(--line);border-radius:14px;
+    }
+    section{padding:78px 0}
+    .section-head{text-align:center;margin-bottom:42px}
+    .section-head h2{margin:0 0 10px;font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.14}
+    .section-head p{max-width:760px;margin:0 auto;color:var(--muted)}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:24px;box-shadow:var(--shadow);
+    }
+    .icon{
+      width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+      background:#eff6ff;color:var(--primary2);font-weight:700;font-size:1.25rem;margin-bottom:16px;
+    }
+    .card h3{margin:0 0 10px;font-size:1.12rem}
+    .card p{margin:0;color:var(--muted)}
+    .about-box{
+      background:linear-gradient(180deg,#fff,#f8fafc);
+      border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow);
+    }
+    .checklist{display:grid;gap:12px;margin-top:18px}
+    .check{display:flex;gap:12px;align-items:flex-start}
+    .check .dot{
+      min-width:24px;height:24px;border-radius:50%;
+      display:grid;place-items:center;background:#dbeafe;color:var(--primary2);
+      font-size:.8rem;font-weight:700;margin-top:2px;
+    }
+    .project{
+      padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff;
+    }
+    .project strong{display:block;margin-bottom:8px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .tag{
+      padding:7px 11px;border-radius:999px;background:#f1f5f9;color:#334155;
+      font-size:.82rem;border:1px solid #e2e8f0;
+    }
+    .cta{
+      background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;border-radius:28px;
+      padding:34px;display:flex;justify-content:space-between;align-items:center;gap:20px;
+    }
+    .cta p{margin:8px 0 0;color:#cbd5e1}
+    .contact-wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:24px}
+    .contact-card{
+      background:#0f172a;color:#fff;border-radius:24px;padding:28px;box-shadow:var(--shadow);
+    }
+    .contact-card p{color:#cbd5e1}
+    .contact-list{display:grid;gap:14px;margin-top:22px}
+    .contact-item{
+      padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08)
+    }
+    form{
+      background:#fff;border-radius:24px;padding:28px;border:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-size:.92rem;margin-bottom:8px;font-weight:700}
+    input, textarea{
+      width:100%;padding:14px;border:1px solid #cbd5e1;border-radius:14px;
+      font:inherit;outline:none;background:#fff;
+    }
+    input:focus, textarea:focus{
+      border-color:var(--primary);box-shadow:0 0 0 4px rgba(37,99,235,.12);
+    }
+    textarea{min-height:140px;resize:vertical}
+    footer{padding:28px 0 50px;text-align:center;color:var(--muted)}
+    @media (max-width:960px){
+      .hero-grid,.grid-3,.grid-2,.contact-wrap{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .cta{flex-direction:column;align-items:flex-start}
+    }
+    @media (max-width:640px){
+      .menu{display:none}
+      .field-grid{grid-template-columns:1fr}
+      .card,form,.contact-card,.about-box{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">S. M. Mahmudul Hasan</a>
+      <div class="menu">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary">Hire Me</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">Odoo Developer • Python Developer • ERP Implementer</span>
+        <h1>I build Odoo ERP solutions, Python automation, and business system integrations.</h1>
+        <p>
+          I am S. M. Mahmudul Hasan, an Odoo developer and implementer with 8 years of experience.
+          I help businesses improve operations with Odoo customization, module development, ERP implementation,
+          API integration, automation, and professional report design.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Discuss Your Project</a>
+          <a href="#services" class="btn btn-outline">View Services</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>8 Years</strong>
+            <span>Odoo and ERP experience</span>
+          </div>
+          <div class="stat">
+            <strong>100+</strong>
+            <span>Custom reports and solutions</span>
+          </div>
+          <div class="stat">
+            <strong>End-to-End</strong>
+            <span>Functional and technical support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="profile-panel">
+          <div class="profile-header">
+            <div>
+              <div style="font-size:1.2rem;font-weight:700;">Professional Snapshot</div>
+              <div style="color:#64748b;margin-top:4px;">Senior Odoo developer and implementer</div>
+            </div>
+            <span class="badge">Available for Projects</span>
+          </div>
+
+          <div style="margin-top:8px;color:#334155;font-weight:700;">Odoo Development</div>
+          <div class="meter"><span style="width:94%"></span></div>
+
+          <div style="margin-top:8px;color:#334155;font-weight:700;">Python Development</div>
+          <div class="meter"><span style="width:89%"></span></div>
+
+          <div style="margin-top:8px;color:#334155;font-weight:700;">ERP Implementation</div>
+          <div class="meter"><span style="width:91%"></span></div>
+
+          <div class="skill-list">
+            <div class="skill"><span>Odoo Custom Modules</span><strong>Advanced</strong></div>
+            <div class="skill"><span>API Integration</span><strong>Advanced</strong></div>
+            <div class="skill"><span>QWeb / PDF / XLSX Reports</span><strong>Advanced</strong></div>
+            <div class="skill"><span>PostgreSQL / Business Logic</span><strong>Advanced</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>My Services</h2>
+        <p>I provide practical Odoo and Python services for companies that need reliable ERP customization, business automation, integrations, and ongoing technical support.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>Odoo Custom Module Development</h3>
+          <p>Custom business modules for sales, inventory, accounting, manufacturing, HR, CRM, payroll, and industry-specific workflows.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>Odoo Implementation & Consultation</h3>
+          <p>Complete ERP setup, requirement analysis, business process mapping, functional consultation, user training, and deployment support.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>Python Development & Automation</h3>
+          <p>Python scripts, automation tools, backend logic, API processing, and business data handling to reduce manual work and improve efficiency.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">04</div>
+          <h3>API Integration</h3>
+          <p>Integrate Odoo with mobile apps, eCommerce, SMS gateways, payment systems, government APIs, third-party platforms, and internal applications.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">05</div>
+          <h3>Custom Reports & Dashboards</h3>
+          <p>Professional QWeb, PDF, Excel, and management dashboards with clean layouts, accurate business data, and better decision support.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">06</div>
+          <h3>Support, Debugging & Migration</h3>
+          <p>Bug fixing, performance improvement, server-side troubleshooting, version migration, access control, and enhancement of existing Odoo systems.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container grid-2">
+      <div class="about-box">
+        <h2 style="margin-top:0;">About Me</h2>
+        <p style="color:#475569;">
+          I work as an Odoo developer and implementer with strong experience in both technical development
+          and functional business processes. I help companies design, improve, and maintain ERP systems
+          that match real operational needs.
+        </p>
+        <p style="color:#475569;">
+          My core strengths include Python, Odoo framework customization, XML, QWeb reports, PostgreSQL,
+          API integration, access control, business workflow automation, and troubleshooting.
+        </p>
+        <div class="checklist">
+          <div class="check"><span class="dot">✓</span><span>8 years of experience in Odoo development and implementation</span></div>
+          <div class="check"><span class="dot">✓</span><span>Experience with custom reports, dashboards, and PDF/XLSX outputs</span></div>
+          <div class="check"><span class="dot">✓</span><span>Strong background in Python, ERP logic, and system integration</span></div>
+          <div class="check"><span class="dot">✓</span><span>Practical support for both business teams and technical teams</span></div>
+        </div>
+      </div>
+
+      <div class="about-box">
+        <h2 style="margin-top:0;">Skills & Technology</h2>
+        <div class="tags">
+          <span class="tag">Odoo 14 / 15 / 16 / 17 / 18</span>
+          <span class="tag">Python</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">XML / QWeb</span>
+          <span class="tag">REST API</span>
+          <span class="tag">ERP Implementation</span>
+          <span class="tag">Automation</span>
+          <span class="tag">Accounting</span>
+          <span class="tag">Inventory</span>
+          <span class="tag">Manufacturing</span>
+          <span class="tag">Payroll</span>
+          <span class="tag">Dashboard & Reporting</span>
+        </div>
+
+        <div style="margin-top:24px;padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff;">
+          <strong style="display:block;margin-bottom:10px;">What I can help you with</strong>
+          <p style="margin:0;color:#64748b;">
+            New Odoo implementation, customization of existing modules, business process automation,
+            report design, API integration, mobile app connection, security/access rules, and performance improvement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2>Project Highlights</h2>
+        <p>Examples of the type of work I do for clients using Odoo and Python-based business systems.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="project">
+          <strong>ERP Customization & Business Workflow Automation</strong>
+          <p style="color:#64748b;margin:0;">Develop and improve modules for sales, inventory, purchase, manufacturing, payroll, and finance based on client business requirements.</p>
+        </div>
+
+        <div class="project">
+          <strong>Professional Report Design</strong>
+          <p style="color:#64748b;margin:0;">Build invoice, packing list, management reports, dashboard screens, PDF reports, and Excel exports with clean professional layouts.</p>
+        </div>
+
+        <div class="project">
+          <strong>API & Mobile App Integration</strong>
+          <p style="color:#64748b;margin:0;">Connect Odoo with third-party systems, mobile applications, SMS, payment gateways, and external business services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 style="margin:0;">Need an Odoo expert for your business?</h2>
+          <p>I can help you build, customize, integrate, and improve your ERP system with reliable Odoo and Python development.</p>
+        </div>
+        <a href="#contact" class="btn btn-primary">Let’s Work Together</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-wrap">
+      <div class="contact-card">
+        <h2 style="margin-top:0;">Contact Me</h2>
+        <p>This website is ready for your real business contact details. Replace the sample contact information below with your email, phone, WhatsApp, LinkedIn, Upwork, or company address.</p>
+
+        <div class="contact-list">
+          <div class="contact-item"><strong>Name:</strong> S. M. Mahmudul Hasan</div>
+          <div class="contact-item"><strong>Role:</strong> Odoo Developer & Python Developer</div>
+          <div class="contact-item"><strong>Email:</strong> mhasan380@gmail.com</div>
+          <div class="contact-item"><strong>Phone / WhatsApp:</strong> +880-1674594432</div>
+          <div class="contact-item"><strong>Location:</strong> Bangladesh</div>
+        </div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); alert('Please connect this form to Formspree, Netlify Forms, or your backend email handler.');">
+        <h2 style="margin-top:0;">Send a Message</h2>
+        <div class="field-grid">
+          <div>
+            <label for="name">Your Name</label>
+            <input id="name" type="text" placeholder="Enter your name" />
+          </div>
+          <div>
+            <label for="email">Your Email</label>
+            <input id="email" type="email" placeholder="Enter your email" />
+          </div>
+        </div>
+        <div style="margin-top:16px;">
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" placeholder="Project subject" />
+        </div>
+        <div style="margin-top:16px;">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Write your project details"></textarea>
+        </div>
+        <div style="margin-top:18px;">
+          <button class="btn btn-light" type="submit">Send Inquiry</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 S. M. Mahmudul Hasan • Odoo Developer • Python Developer
+    </div>
+  </footer>
+</body>
+</html>
